@@ -228,5 +228,5 @@ with col_fn2:
         st.switch_page("pages/06_Customize_My_Outfit.py")
 
 with col_fn3:
-    if st.button("VIEW FINAL LOOK →", type="primary", use_container_width=True):
-        st.switch_page("pages/12_Final_Look.py")
+    if st.button("Budget Stylist →", type="primary", use_container_width=True):
+        st.switch_page("pages/07_Budget_Stylist.py")

@@ -76,3 +76,12 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+st.markdown("<br>", unsafe_allow_html=True)
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("← Back to Interactive Pairing"):
+        st.switch_page("pages/08_Interactive_Pairing.py")
+with col2:
+    if st.button("Virtual Styling →", type="primary", use_container_width=True):
+        st.switch_page("pages/10_Virtual_Styling___Preview.py")

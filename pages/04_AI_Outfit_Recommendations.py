@@ -161,11 +161,32 @@ else:
                 with cols_grid[c_idx]:
                     is_in_cart = st.session_state.cart_items.get(cat, {}).get("item_id") == item["item_id"]
                     
+                    import base64
+                    import os
+                    import urllib.parse
+                    
+                    img_filename = item.get('image', '')
                     img_url = ""
-                    if cat == "Top": img_url = "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80"
-                    elif cat == "Bottom": img_url = "https://images.unsplash.com/photo-1542272454315-4c01d71de619?w=400&q=80"
-                    elif cat == "Shoes": img_url = "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&q=80"
-                    else: img_url = "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80"
+                    
+                    if img_filename:
+                        # Try to find the image in likely directories
+                        found = False
+                        for folder in ["images", "static", "data", "."]:
+                            path = os.path.join(folder, img_filename)
+                            if os.path.exists(path):
+                                with open(path, "rb") as f:
+                                    b64_data = base64.b64encode(f.read()).decode("utf-8")
+                                    # determine mime type
+                                    ext = os.path.splitext(img_filename)[1].lower()
+                                    mime = "image/png" if ext == ".png" else "image/jpeg"
+                                    img_url = f"data:{mime};base64,{b64_data}"
+                                found = True
+                                break
+                        if not found:
+                            # Fallback if image file is not found locally
+                            img_url = f"https://placehold.co/400x500/e6e4eb/1d1528?text={urllib.parse.quote(item['item_name'])}"
+                    else:
+                        img_url = f"https://placehold.co/400x500/e6e4eb/1d1528?text={urllib.parse.quote(item['item_name'])}"
 
                     st.markdown(
                         f"""

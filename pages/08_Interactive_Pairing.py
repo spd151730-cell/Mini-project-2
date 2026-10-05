@@ -65,3 +65,12 @@ for idx, item in enumerate(flow):
     st.markdown(f"<div class='chip' style='margin-right:0.4rem; margin-bottom:0.4rem;'>{item}</div>", unsafe_allow_html=True)
     if idx < len(flow)-1:
         st.markdown("<div style='display:inline-block; margin:0 0.3rem 0.6rem 0; color:#8c7ea4;'>↓</div>", unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("← Back to Budget Stylist"):
+        st.switch_page("pages/07_Budget_Stylist.py")
+with col2:
+    if st.button("Why This Outfit →", type="primary", use_container_width=True):
+        st.switch_page("pages/09_Why_This_Outfit.py")

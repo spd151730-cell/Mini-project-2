@@ -35,3 +35,12 @@ for name, style, vibe, detail, emoji in identities:
             st.switch_page("pages/04_AI_Outfit_Recommendations.py")
 
 st.info("This page is a front-end identity switcher for future style-profile variants.")
+
+st.markdown("<br>", unsafe_allow_html=True)
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("← Back to Virtual Styling"):
+        st.switch_page("pages/10_Virtual_Styling___Preview.py")
+with col2:
+    if st.button("VIEW FINAL LOOK →", type="primary", use_container_width=True):
+        st.switch_page("pages/12_Final_Look.py")

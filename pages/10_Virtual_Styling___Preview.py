@@ -69,8 +69,10 @@ for col, icon, name in zip([col1, col2, col3, col4], ["👕", "👖", "👟", "�
 st.markdown("<br>", unsafe_allow_html=True)
 col_a, col_b, col_c = st.columns(3)
 with col_a:
-    st.button("↻ Regenerate preview")
+    if st.button("← Back to Why This Outfit"):
+        st.switch_page("pages/09_Why_This_Outfit.py")
 with col_b:
-    st.button("⬇ Save image")
+    st.button("↻ Regenerate preview")
 with col_c:
-    st.button("✓ Finalize look")
+    if st.button("Multi Identity →", type="primary"):
+        st.switch_page("pages/11_Multi_Identity.py")
